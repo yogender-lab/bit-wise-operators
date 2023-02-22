@@ -1,0 +1,96 @@
+
+#include <stdio.h>
+void set_bit(int a)
+{
+    int p;
+    printf("enter position to set:");
+    scanf("%d",&p);
+    a=a|(1<<(p-1));
+    printf("\n%d",a);
+}
+void clear_bit(int a)
+{
+     int p;
+    printf("enter position to clear:");
+    scanf("%d",&p);
+    a=a&(~(1<<(p-1)));
+    printf("\n%d",a);
+}
+void toggle_bit(int a)
+{
+     int p;
+    printf("enter position to toggle:");
+    scanf("%d",&p);
+    a=a^(1<<(p-1));
+    printf("\n%d",a);
+    
+}
+void print_number(int num)
+{
+    for(int i=31;i>=0;i--)
+    {
+        if(num&(1<<i))
+        {
+            printf("1");
+        }
+        else
+        {
+            printf("0");
+        }
+    }
+}
+void power_of_two(int num)
+{
+    int flag=0;
+    for(int i=0;i<32;i++)
+    {
+        if(num&1)
+        {
+            flag++;
+        }
+        num=num>>1;
+    }
+    if(flag==1)
+    {
+        printf("\npower of two");
+    }
+    else
+    {
+        printf("\nnot a power of two");
+    }
+}
+void swap(int a,int b)
+{
+    a=a^b;
+    b=a^b;
+    a=a^b;
+    printf("\n%d %d",a,b);
+}
+void swap_bits(int x)
+{
+    int p1,p2;
+    printf("enter position 1:");
+    scanf("%d",&p1);
+    printf("enter position 2:");
+    scanf("%d",&p2);
+    int b1=(x>>p1)&1;
+    int b2=(x>>p2)&1;
+    int y=b1^b2;
+    y=(y<<p1)|(y<<p2);
+    int result=x^y;
+    printf("%d",result);
+}
+int main()
+{
+    int num;
+    printf("enter number:");
+    scanf("%d",&num);
+    /*print_number(num);
+    set_bit(num);
+    clear_bit(num);
+    toggle_bit(num);
+    power_of_two(num);
+    swap(10,20);*/
+    swap_bits(num);
+    return 0;
+}
